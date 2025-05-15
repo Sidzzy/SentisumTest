@@ -7,60 +7,12 @@
     },
     "cards": [
       {
-        "id": "card1",
-        "type": "MC",
-        "title": "Volume",
-        "data": {
-          "currentValue": 18851,
-          "previousValue": 87258,
-          "change": -68407,
-          "comparisonType": "absolute"
-        },
-        "style": {
-          "backgroundColor": "#E6F4EA",
-          "textColor": "#1A7F37",
-          "icon": "📊"
-        }
-      },
-      {
-        "id": "card2",
-        "type": "MC",
-        "title": "% Of Tickets",
-        "data": {
-          "currentValue": 100,
-          "previousValue": 100,
-          "change": 0,
-          "comparisonType": "absolute"
-        },
-        "style": {
-          "backgroundColor": "#F3E8FF",
-          "textColor": "#6B21A8",
-          "icon": "🎟️"
-        }
-      },
-      {
-        "id": "card3",
-        "type": "MC",
-        "title": "Sentiment",
-        "data": {
-          "currentValue": 93,
-          "previousValue": 88,
-          "change": 5,
-          "comparisonType": "absolute"
-        },
-        "style": {
-          "backgroundColor": "#E0F2FE",
-          "textColor": "#0369A1",
-          "icon": "😊"
-        }
-      },
-      {
         "id": "card5",
         "type": "H",
         "layout": {
           "x": 0,
           "y": 0,
-          "w": 7,
+          "w": 8,
           "h": 7
         },
         "title": "App Issues",
@@ -368,24 +320,72 @@
             "currentValue": 10245,
             "change": -50,
             "currentTrend": [
-              { "date": "2023-10-01", "value": 1500 },
-              { "date": "2023-10-02", "value": 1700 },
-              { "date": "2023-10-03", "value": 1400 },
-              { "date": "2023-10-04", "value": 1800 },
-              { "date": "2023-10-05", "value": 1600 },
-              { "date": "2023-10-06", "value": 1900 },
-              { "date": "2023-10-07", "value": 1200 },
-              { "date": "2023-10-08", "value": 1100 }
+              {
+                "date": "2023-10-01",
+                "value": 1500
+              },
+              {
+                "date": "2023-10-02",
+                "value": 1700
+              },
+              {
+                "date": "2023-10-03",
+                "value": 1400
+              },
+              {
+                "date": "2023-10-04",
+                "value": 1800
+              },
+              {
+                "date": "2023-10-05",
+                "value": 1600
+              },
+              {
+                "date": "2023-10-06",
+                "value": 1900
+              },
+              {
+                "date": "2023-10-07",
+                "value": 1200
+              },
+              {
+                "date": "2023-10-08",
+                "value": 1100
+              }
             ],
             "previousTrend": [
-              { "date": "2023-09-03", "value": 1300 },
-              { "date": "2023-09-04", "value": 1400 },
-              { "date": "2023-09-05", "value": 1500 },
-              { "date": "2023-09-06", "value": 1600 },
-              { "date": "2023-09-07", "value": 1700 },
-              { "date": "2023-09-08", "value": 1800 },
-              { "date": "2023-09-09", "value": 1900 },
-              { "date": "2023-09-10", "value": 2000 }
+              {
+                "date": "2023-09-03",
+                "value": 1300
+              },
+              {
+                "date": "2023-09-04",
+                "value": 1400
+              },
+              {
+                "date": "2023-09-05",
+                "value": 1500
+              },
+              {
+                "date": "2023-09-06",
+                "value": 1600
+              },
+              {
+                "date": "2023-09-07",
+                "value": 1700
+              },
+              {
+                "date": "2023-09-08",
+                "value": 1800
+              },
+              {
+                "date": "2023-09-09",
+                "value": 1900
+              },
+              {
+                "date": "2023-09-10",
+                "value": 2000
+              }
             ]
           },
           {
@@ -393,24 +393,72 @@
             "currentValue": 8750,
             "change": 200,
             "currentTrend": [
-              { "date": "2023-10-01", "value": 900 },
-              { "date": "2023-10-02", "value": 1200 },
-              { "date": "2023-10-03", "value": 1100 },
-              { "date": "2023-10-04", "value": 1300 },
-              { "date": "2023-10-05", "value": 1250 },
-              { "date": "2023-10-06", "value": 1400 },
-              { "date": "2023-10-07", "value": 950 },
-              { "date": "2023-10-08", "value": 1000 }
+              {
+                "date": "2023-10-01",
+                "value": 900
+              },
+              {
+                "date": "2023-10-02",
+                "value": 1200
+              },
+              {
+                "date": "2023-10-03",
+                "value": 1100
+              },
+              {
+                "date": "2023-10-04",
+                "value": 1300
+              },
+              {
+                "date": "2023-10-05",
+                "value": 1250
+              },
+              {
+                "date": "2023-10-06",
+                "value": 1400
+              },
+              {
+                "date": "2023-10-07",
+                "value": 950
+              },
+              {
+                "date": "2023-10-08",
+                "value": 1000
+              }
             ],
             "previousTrend": [
-              { "date": "2023-09-03", "value": 800 },
-              { "date": "2023-09-04", "value": 850 },
-              { "date": "2023-09-05", "value": 900 },
-              { "date": "2023-09-06", "value": 950 },
-              { "date": "2023-09-07", "value": 1000 },
-              { "date": "2023-09-08", "value": 1050 },
-              { "date": "2023-09-09", "value": 1100 },
-              { "date": "2023-09-10", "value": 1150 }
+              {
+                "date": "2023-09-03",
+                "value": 800
+              },
+              {
+                "date": "2023-09-04",
+                "value": 850
+              },
+              {
+                "date": "2023-09-05",
+                "value": 900
+              },
+              {
+                "date": "2023-09-06",
+                "value": 950
+              },
+              {
+                "date": "2023-09-07",
+                "value": 1000
+              },
+              {
+                "date": "2023-09-08",
+                "value": 1050
+              },
+              {
+                "date": "2023-09-09",
+                "value": 1100
+              },
+              {
+                "date": "2023-09-10",
+                "value": 1150
+              }
             ]
           },
           {
@@ -502,7 +550,7 @@
           "x": 0,
           "y": 8,
           "w": 4,
-          "h": 10
+          "h": 11
         }
       },
       {
