@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: ['http://localhost:5174', 'http://localhost:5173', 'https://sentisum-test.vercel.app/'] }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -79,7 +79,7 @@ app.get("/conversations", (req, res) => {
         const randomConversations = filteredConversations
             .sort(() => 0.5 - Math.random()) // Shuffle the array
             .slice(0, 5) // Take the first 5 items
-            .map(({ id, message, timestamp }) => ({ id, message, timestamp })); // Return only required fields
+            .map(({ id, message, timestamp, source }) => ({ id, message, timestamp, source })); // Return only required fields
 
         // Send the response
         res.json({
