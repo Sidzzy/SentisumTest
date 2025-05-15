@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  AreaChart,
-  Area,
-  ResponsiveContainer,
-  Tooltip,
-  YAxis
-} from 'recharts';
+import { AreaChart, Area, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 import { buildGraphData } from '../../utils/graphUtils';
 import CustomTooltip from './graph-components/CustomTooltip';
 
@@ -35,12 +29,24 @@ const StaticGraphForCardRow = ({ currentTrend, previousTrend }) => {
           <YAxis domain={yDomain} hide />
           <defs>
             {/* Gradient for Current Trend */}
-            <linearGradient id="currentTrendGradient" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient
+              id="currentTrendGradient"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
               <stop offset="0%" stopColor="#9CB9FF" stopOpacity={0.3} />
               <stop offset="100%" stopColor="#4F46E5" stopOpacity={0} />
             </linearGradient>
             {/* Gradient for Previous Trend */}
-            <linearGradient id="previousTrendGradient" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient
+              id="previousTrendGradient"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
               <stop offset="0%" stopColor="#9CA3AF" stopOpacity={0.3} />
               <stop offset="100%" stopColor="#9CA3AF" stopOpacity={0} />
             </linearGradient>

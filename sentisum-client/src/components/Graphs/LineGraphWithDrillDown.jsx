@@ -172,7 +172,13 @@ const LineGraphWithDrillDown = ({ graphData }) => {
           />
           <Tooltip content={<CustomTooltip isDragging={isDragging} />} />
           <defs>
-            <linearGradient id="currentTrendGradient" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient
+              id="currentTrendGradient"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
               <stop offset="0%" stopColor="#9CB9FF" stopOpacity={0.3} />
               <stop offset="100%" stopColor="#4F46E5" stopOpacity={0} />
             </linearGradient>

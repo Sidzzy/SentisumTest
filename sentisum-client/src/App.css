@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 @keyframes slideIn {
-    from {
-      transform: translateX(30%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  from {
+    transform: translateX(30%);
+    opacity: 0;
   }
-  
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .animate-slide-in {
-animation: slideIn 0.5s ease-out;
+  animation: slideIn 0.5s ease-out;
 }

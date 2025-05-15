@@ -32,6 +32,7 @@ export const getTrendChangePercentage = (item) => {
     item.currentTrend[item.currentTrend.length - 1]?.value || 0;
   const previousTrendValue =
     item.previousTrend[item.previousTrend.length - 1]?.value || 0;
-  const change = ((currentTrendValue - previousTrendValue) / previousTrendValue) * 100;
+  const change =
+    ((currentTrendValue - previousTrendValue) / previousTrendValue) * 100;
   return change;
 };

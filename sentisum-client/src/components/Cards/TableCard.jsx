@@ -37,7 +37,7 @@ const TableCard = ({ data, columns, dateRange }) => {
         </thead>
         <tbody>
           {data.map((item, index) => {
-            const trendChange =  getTrendChangePercentage(item);
+            const trendChange = getTrendChangePercentage(item);
             return (
               <tr
                 key={index}
@@ -46,34 +46,30 @@ const TableCard = ({ data, columns, dateRange }) => {
                 } hover:bg-white hover:shadow-lg`}
                 onClick={() => handleRowClick(item)}
               >
-                <td className="py-3 px-4 text-gray-800">
-                  {item.name}
-                </td>
-                <td className="py-3 px-6 text-gray-800">
-                  {item.currentValue}
-                </td>
+                <td className="py-3 px-4 text-gray-800">{item.name}</td>
+                <td className="py-3 px-6 text-gray-800">{item.currentValue}</td>
                 <td
                   className={`pr-4 flex grow items-center space-x-2 ${
                     trendChange <= 0 ? 'text-green-600' : 'text-red-600'
                   }`}
                 >
-                  <span className="text-lg">
-                    {trendChange > 0 ? '▲' : '▼'}
+                  <span className="text-lg">{trendChange > 0 ? '▲' : '▼'}</span>
+                  <span className="font-medium">
+                    {Math.ceil(Math.abs(trendChange))}%
                   </span>
-                  <span className="font-medium">{Math.ceil(Math.abs(trendChange))}%</span>
                   <div className="flex-grow">
                     <StaticGraphForCardRow
                       currentTrend={item.currentTrend}
                       previousTrend={item.previousTrend}
                     />
-                </div>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-);
-}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 export default TableCard;

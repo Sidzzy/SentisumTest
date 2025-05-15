@@ -75,7 +75,9 @@ const GraphWithConversationModal = ({
                   className="absolute -top-10 right-0 bg-gray-50 text-gray-700 px-4 py-2 rounded-lg shadow-md flex items-center animate-slide-in"
                   style={{ animation: 'slideIn 1s ease-out' }}
                 >
-                  <span className="text-sm">Drag on the graph to drill-down</span>
+                  <span className="text-sm">
+                    Drag on the graph to drill-down
+                  </span>
                   <button
                     onClick={() => setShowTooltip(false)}
                     className="ml-4 text-gray-500 hover:text-gray-700 focus:outline-none"
