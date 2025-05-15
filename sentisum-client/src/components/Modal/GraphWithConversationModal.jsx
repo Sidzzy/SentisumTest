@@ -7,7 +7,7 @@ import MetricsCardSmall from '../Cards/MetricsCardSmall';
 
 const dataCache = new Map();
 
-async function fetchData(setTicketData, setMetrics, dateRange) {
+async function fetchData(setTicketData, setMetrics, dateRange, graphData) {
   setTicketData(null);
   setMetrics(null);
   const dateRangeKey = `${dateRange.start.split('T')[0]}-${dateRange.end.split('T')[0]}`;
@@ -20,7 +20,7 @@ async function fetchData(setTicketData, setMetrics, dateRange) {
   const data = dataCache.get(dateRangeKey);
   setTimeout(() => {
     setTicketData(modifyTicketData(data));
-    setMetrics(modifyMetricsData(data));
+    setMetrics(modifyMetricsData(data, graphData));
   }, 100); // Simulate loading delay
 }
 
@@ -36,8 +36,8 @@ const GraphWithConversationModal = ({
   const [metrics, setMetrics] = React.useState(null);
   const [showTooltip, setShowTooltip] = React.useState(true);
   useEffect(() => {
-    fetchData(setTicketData, setMetrics, dateRange);
-  }, [dateRange]);
+    fetchData(setTicketData, setMetrics, dateRange, graphData);
+  }, [dateRange, graphData]);
 
   if (!isOpen) return null;
 

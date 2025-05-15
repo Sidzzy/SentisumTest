@@ -1,6 +1,7 @@
 import React from 'react';
 import StaticGraphForCardRow from '../Graphs/StaticGraphForCardRow';
 import { useModal } from '../../context/ModalContext';
+import { getTrendChangePercentage } from '../../utils/cardUtils';
 
 const TableCard = ({ data, columns, dateRange }) => {
   const { openModal } = useModal();
@@ -20,9 +21,9 @@ const TableCard = ({ data, columns, dateRange }) => {
   };
 
   return (
-    <div className="p-4 w-full h-full overflow-auto">
-      <table className="w-full border-collapse rounded-lg">
-        <thead className="sticky top-0 z-10 rounded-xl ">
+    <div className="p-4 pt-0 w-full h-full overflow-auto">
+      <table className="w-full border-collapse rounded-lg table-fixed">
+        <thead className="z-10 rounded-xl ">
           <tr>
             {columns.map((column, index) => (
               <th
@@ -35,42 +36,44 @@ const TableCard = ({ data, columns, dateRange }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
-            <tr
-              key={index}
-              className={`transition-all duration-200 cursor-pointer ${
-                index !== data.length - 1 ? 'border-b border-gray-200' : ''
-              } hover:bg-white hover:shadow-lg`}
-              onClick={() => handleRowClick(item)}
-            >
-              <td className="py-3 px-4 text-gray-800">
-                {item.name}
-              </td>
-              <td className="py-3 px-4 text-gray-800">
-                {item.currentValue}
-              </td>
-              <td
-                className={`py-3 px-4 flex items-center gap-2 space-x-2 ${
-                  item.change > 0 ? 'text-green-600' : 'text-red-600'
-                }`}
+          {data.map((item, index) => {
+            const trendChange =  getTrendChangePercentage(item);
+            return (
+              <tr
+                key={index}
+                className={`transition-all duration-200 cursor-pointer ${
+                  index !== data.length - 1 ? 'border-b border-gray-200' : ''
+                } hover:bg-white hover:shadow-lg`}
+                onClick={() => handleRowClick(item)}
               >
-                <span className="text-lg">
-                  {item.change > 0 ? '▲' : '▼'}
-                </span>
-                <span className="font-medium">{Math.abs(item.change)}</span>
-                <div className="">
-                  <StaticGraphForCardRow
-                    currentTrend={item.currentTrend}
-                    previousTrend={item.previousTrend}
-                  />
+                <td className="py-3 px-4 text-gray-800">
+                  {item.name}
+                </td>
+                <td className="py-3 px-6 text-gray-800">
+                  {item.currentValue}
+                </td>
+                <td
+                  className={`pr-4 flex grow items-center space-x-2 ${
+                    trendChange <= 0 ? 'text-green-600' : 'text-red-600'
+                  }`}
+                >
+                  <span className="text-lg">
+                    {trendChange > 0 ? '▲' : '▼'}
+                  </span>
+                  <span className="font-medium">{Math.ceil(Math.abs(trendChange))}%</span>
+                  <div className="flex-grow">
+                    <StaticGraphForCardRow
+                      currentTrend={item.currentTrend}
+                      previousTrend={item.previousTrend}
+                    />
                 </div>
               </td>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+);
+}
 export default TableCard;

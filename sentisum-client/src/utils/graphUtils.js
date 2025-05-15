@@ -1,15 +1,5 @@
-// const ticketData = [
-//     { id: "10322591", source: "API", message: "se cerró el juego", timestamp: "07:30 PM" },
-//     { id: "10322587", source: "API", message: "se cerró el estúpido juego", timestamp: "07:30 PM" },
-//     { id: "10322586", source: "API", message: "the game is backed", timestamp: "07:30 PM" },
-//   ];
+import { getTrendChangePercentage } from './cardUtils';
 
-//   metrics: [
-//     { label: "Volume", value: "8,102" },
-//     { label: "Sentiment", value: "5%" },
-//     { label: "Percent of Tickets", value: "14%" },
-//     { label: "CSAT", value: "94%" },
-//   ],
 export const buildGraphData = (currentTrend, previousTrend) =>
   currentTrend.map((item, index) => ({
     date: new Date(item.date).toLocaleDateString(), // Ensure date is formatted as a string
@@ -32,11 +22,11 @@ export const modifyTicketData = (ticketData) => {
   }));
 };
 
-export const modifyMetricsData = (data) => {
+export const modifyMetricsData = (data, graphData) => {
   return [
     { label: 'Volume', value: data.totalConversations },
     { label: 'NSAT', value: parseInt(data.nsatPercentage, 10) + '%' },
-    { label: 'Percent of Tickets', value: '14%' },
+    { label: 'Increased Tickets', value:  Math.ceil(getTrendChangePercentage(graphData)) + '%' },
     { label: 'Sentiment', value: '5%' },
   ];
 };

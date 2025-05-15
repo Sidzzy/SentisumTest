@@ -14,12 +14,11 @@ export const updateLayoutAPI = (layout) => {
       }
       return response.json();
     })
-    .then((data) => {
+    .then(() => {
       // TODO: Handle success on UI
-      console.log('Layout updated successfully:', data);
     })
     .catch((error) => {
       //TODO: Handle error on UI
-      console.error('Error fetching dashboard data:', error);
+      console.error('Error posting layout data...', error);
     });
 };

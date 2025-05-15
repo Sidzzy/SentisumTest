@@ -11,6 +11,7 @@ import {
 } from 'recharts';
 import { buildGraphData } from '../../utils/graphUtils';
 import { useModal } from '../../context/ModalContext';
+import CustomTooltip from './graph-components/CustomTooltip';
 
 const LineGraphWithDrillDown = ({ graphData }) => {
   const rootData = buildGraphData(
@@ -169,25 +170,7 @@ const LineGraphWithDrillDown = ({ graphData }) => {
             }}
             axisLine={false}
           />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: '#1F2937',
-              borderRadius: '8px',
-              border: 'none',
-              padding: '10px',
-            }}
-            itemStyle={{
-              color: '#F9FAFB',
-              fontSize: '14px',
-              fontFamily: 'Arial, sans-serif',
-            }}
-            labelStyle={{
-              color: '#9CA3AF',
-              fontSize: '12px',
-              fontFamily: 'Arial, sans-serif',
-            }}
-            cursor={{ fill: 'rgba(75, 85, 99, 0.2)' }}
-          />
+          <Tooltip content={<CustomTooltip isDragging={isDragging} />} />
           <defs>
             <linearGradient id="currentTrendGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#9CB9FF" stopOpacity={0.3} />

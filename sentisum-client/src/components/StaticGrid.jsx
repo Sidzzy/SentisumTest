@@ -23,6 +23,7 @@ const StaticGrid = ({ layout, onLayoutChange, children }) => {
       compactType="horizontal" // Enable horizontal compaction
       isResizable={true} // Allow resizing
       isDraggable={true} // Allow dragging
+      resizeHandles={['s', 'w', 'e', 'sw', 'se']} // Enable resizing from all borders and corners
     >
       {children}
     </GridLayout>

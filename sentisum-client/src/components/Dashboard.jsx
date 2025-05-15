@@ -7,6 +7,7 @@ import { getCardsLayout } from '../utils/cardUtils';
 import { ModalProvider, useModal } from '../context/ModalContext';
 import GraphWithConversationModal from './Modal/GraphWithConversationModal';
 import ShimmerUI from './ShimmerUI';
+import MonthlyTarget from './Cards/MonthlyTargetCard';
 
 const DashboardContent = () => {
   const [dashboard, setDashboard] = useState(null);
@@ -23,7 +24,7 @@ const DashboardContent = () => {
   useEffect(() => {
     if (dashboard) {
       const cards = dashboard.dashboard.cards.filter(
-        (card) => card.type === 'H'
+        (card) => card.type === 'H' || card.type === 'MT'
       );
       setLayout(getCardsLayout(cards));
       setCards(cards);
@@ -43,12 +44,12 @@ const DashboardContent = () => {
   }, [layout, cards]);
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
+    <div className="p-10 bg-gradient-to-b from-gray-50 to-white min-h-screen">
       {!loading ? (
         <StaticGrid layout={layout} onLayoutChange={setLayout}>
           {cards.map((card) => (
             <div key={card.id}>
-              <Card title={card.title}>
+              <Card title={card.title} subtitle={card.subtitle}>
                 {card.type === 'H' && (
                   <TableCard
                     data={card.data}
@@ -56,6 +57,7 @@ const DashboardContent = () => {
                     dateRange={dateRange}
                   />
                 )}
+                {card.type === 'MT' && <MonthlyTarget />}
               </Card>
             </div>
           ))}

@@ -15,7 +15,6 @@ export const getFileData = (fileLocation) => {
 export const updateFileData = (newData, fileLocation) => {
     try {
         writeFileSync(fileLocation, JSON.stringify(newData, null, 2), "utf-8");
-        console.log("File data updated successfully.");
     } catch (error) {
         console.error("Error updating file data:", error);
     }
