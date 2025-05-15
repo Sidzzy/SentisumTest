@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-app.use(cors({ origin: ['http://localhost:5174', 'http://localhost:5173', 'https://sentisum-test.vercel.app/'] }));
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -45,7 +45,7 @@ app.post("/updateLayout", (req, res) => {
         const dashboardData = getDashboardData();
         const newDashboardData = updateLayoutUtility(updatedLayouts, dashboardData);
         setDashboardData(newDashboardData);
-        res.send("Layout updated successfully!");
+        res.json("Layout updated successfully!");
     } catch (error) {
         console.error("Error updating layout:", error);
         return res.status(500).json({ error: "Failed to update layout" });
