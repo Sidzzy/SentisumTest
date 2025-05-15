@@ -1,6 +1,6 @@
 // filepath: /src/config.js
 const config = {
-  apiEndPoint: 'http://localhost:5001',
+  apiEndPoint: 'https://sentisumtest.onrender.com',
 };
 
 export default config;
