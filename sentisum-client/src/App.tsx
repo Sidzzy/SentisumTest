@@ -1,8 +1,12 @@
+import React from 'react';
 import Dashboard from './components/Dashboard';
 import './App.css';
 import AppSidebar from './components/SideBar';
 
-function App() {
+// Define the interface for the component's props (if needed in the future)
+interface AppProps {}
+
+const App: React.FC<AppProps> = () => {
   return (
     <div className="flex h-screen bg-white">
       <AppSidebar />
@@ -11,6 +15,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

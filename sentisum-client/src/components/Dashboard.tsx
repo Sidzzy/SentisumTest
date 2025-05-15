@@ -8,12 +8,18 @@ import { ModalProvider, useModal } from '../context/ModalContext';
 import GraphWithConversationModal from './Modal/GraphWithConversationModal';
 import ShimmerUI from './ShimmerUI';
 import MonthlyTarget from './Cards/MonthlyTargetCard';
+import {
+  LayoutItem,
+  DateRange,
+  DashboardCard,
+  DashboardData,
+} from '../interfaces/dashboardInterface';
 
-const DashboardContent = () => {
-  const [dashboard, setDashboard] = useState(null);
-  const [cards, setCards] = useState(null);
-  const [dateRange, setDateRange] = useState({});
-  const [layout, setLayout] = useState([]);
+const DashboardContent: React.FC = () => {
+  const [dashboard, setDashboard] = useState<DashboardData | null>(null);
+  const [cards, setCards] = useState<DashboardCard[] | null>(null);
+  const [dateRange, setDateRange] = useState<DateRange | null>(null);
+  const [layout, setLayout] = useState<LayoutItem[]>([]);
   const [loading, setLoading] = useState(true);
   const { modalState, closeModal } = useModal();
 
@@ -23,11 +29,11 @@ const DashboardContent = () => {
 
   useEffect(() => {
     if (dashboard) {
-      const cards = dashboard.dashboard.cards.filter(
+      const filteredCards = dashboard.dashboard.cards.filter(
         (card) => card.type === 'H' || card.type === 'MT'
       );
-      setLayout(getCardsLayout(cards));
-      setCards(cards);
+      setLayout(getCardsLayout(filteredCards));
+      setCards(filteredCards);
       setDateRange(dashboard.dashboard.dateRange);
     }
   }, [dashboard]);
@@ -46,15 +52,18 @@ const DashboardContent = () => {
   return (
     <div className="p-10 bg-gradient-to-b from-gray-50 to-white min-h-screen">
       {!loading ? (
-        <StaticGrid layout={layout} onLayoutChange={setLayout}>
-          {cards.map((card) => (
+        <StaticGrid
+          layout={layout}
+          onLayoutChange={(newLayout) => setLayout(newLayout as LayoutItem[])}
+        >
+          {cards?.map((card) => (
             <div key={card.id}>
               <Card title={card.title} subtitle={card.subtitle}>
-                {card.type === 'H' && (
+                {card.type === 'H' && card.data && card.columns && (
                   <TableCard
                     data={card.data}
                     columns={card.columns}
-                    dateRange={dateRange}
+                    dateRange={dateRange!}
                   />
                 )}
                 {card.type === 'MT' && <MonthlyTarget />}
@@ -77,10 +86,8 @@ const DashboardContent = () => {
           isOpen={modalState.isOpen}
           onClose={closeModal}
           graphData={modalState.graphData}
-          ticketData={modalState.ticketData}
           title={modalState.title}
           description={modalState.description}
-          metrics={modalState.metrics}
           dateRange={modalState.dateRange}
         />
       )}
@@ -88,7 +95,7 @@ const DashboardContent = () => {
   );
 };
 
-const Dashboard = () => (
+const Dashboard: React.FC = () => (
   <ModalProvider>
     <DashboardContent />
   </ModalProvider>

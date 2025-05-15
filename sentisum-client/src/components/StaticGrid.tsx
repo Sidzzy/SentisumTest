@@ -1,14 +1,28 @@
 import React from 'react';
-import GridLayout from 'react-grid-layout';
+import GridLayout, { Layout } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import { sanitizeLayoutComingFromGrid } from '../utils/cardUtils';
 import { updateLayoutAPI } from '../../apis/layoutAPI';
+import { LayoutItem } from '../interfaces/dashboardInterface'; // Import the LayoutItem type
 
-const StaticGrid = ({ layout, onLayoutChange, children }) => {
-  const handleResizeOrDropStop = (layout) => {
+// Define the interface for the layout prop
+
+interface StaticGridProps {
+  layout: LayoutItem[]; // Array of layout items
+  onLayoutChange: (layout: Layout[]) => void; // Callback for layout changes
+  children: React.ReactNode; // Children to render inside the grid
+}
+
+const StaticGrid: React.FC<StaticGridProps> = ({
+  layout,
+  onLayoutChange,
+  children,
+}) => {
+  const handleResizeOrDropStop = (layout: Layout[]) => {
     const sanitizedLayout = sanitizeLayoutComingFromGrid(layout);
     updateLayoutAPI(sanitizedLayout);
   };
+
   return (
     <GridLayout
       className="layout flex"

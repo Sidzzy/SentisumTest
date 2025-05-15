@@ -1,7 +1,13 @@
 import React from 'react';
 import ShimmerUI from './ShimmerUI';
+import { TicketData } from '../interfaces/dashboardInterface';
 
-const Conversations = ({ ticketData }) => {
+// Define the interface for the component's props
+interface ConversationsProps {
+  ticketData: TicketData[] | null; // Array of ticket data or null (if loading)
+}
+
+const Conversations: React.FC<ConversationsProps> = ({ ticketData }) => {
   return (
     <div className="w-2/5 p-6 overflow-auto bg-white shadow-md rounded-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-6 border-b pb-2">

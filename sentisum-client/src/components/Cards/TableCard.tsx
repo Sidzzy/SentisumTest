@@ -2,11 +2,18 @@ import React from 'react';
 import StaticGraphForCardRow from '../Graphs/StaticGraphForCardRow';
 import { useModal } from '../../context/ModalContext';
 import { getTrendChangePercentage } from '../../utils/cardUtils';
+import { DateRange, TableDataItem } from '../../interfaces/dashboardInterface';
 
-const TableCard = ({ data, columns, dateRange }) => {
+interface TableCardProps {
+  data: TableDataItem[]; // Array of data items
+  columns: string[]; // Array of column names
+  dateRange: DateRange; // Date range object
+}
+
+const TableCard: React.FC<TableCardProps> = ({ data, columns, dateRange }) => {
   const { openModal } = useModal();
 
-  const handleRowClick = (item) => {
+  const handleRowClick = (item: TableDataItem) => {
     const graphData = {
       currentTrend: item.currentTrend,
       previousTrend: item.previousTrend,
@@ -23,12 +30,12 @@ const TableCard = ({ data, columns, dateRange }) => {
   return (
     <div className="p-4 pt-0 w-full h-full overflow-auto">
       <table className="w-full border-collapse rounded-lg table-fixed">
-        <thead className="z-10 rounded-xl ">
+        <thead className="z-10 rounded-xl">
           <tr>
             {columns.map((column, index) => (
               <th
                 key={index}
-                className="py-3 px-4 text-sm font-medium capitalize text-gray-600  text-left border-b border-gray-200"
+                className="py-3 px-4 text-sm font-medium capitalize text-gray-600 text-left border-b border-gray-200"
               >
                 {column}
               </th>
@@ -72,4 +79,5 @@ const TableCard = ({ data, columns, dateRange }) => {
     </div>
   );
 };
+
 export default TableCard;

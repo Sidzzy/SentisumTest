@@ -4,10 +4,30 @@ import { getConversationData } from '../../../apis/conversationAPI';
 import { modifyTicketData, modifyMetricsData } from '../../utils/graphUtils';
 import Conversations from '../Conversations';
 import MetricsCardSmall from '../Cards/MetricsCardSmall';
+import {
+  GraphData,
+  DateRange,
+  Metrics,
+  TicketData,
+} from '../../interfaces/dashboardInterface';
 
-const dataCache = new Map();
+interface GraphWithConversationModalProps {
+  isOpen: boolean; // Whether the modal is open
+  onClose: () => void; // Callback to close the modal
+  graphData: GraphData; // Data for the graph
+  title: string; // Title of the modal
+  description: string; // Description of the modal
+  dateRange: DateRange; // Date range for the modal
+}
 
-async function fetchData(setTicketData, setMetrics, dateRange, graphData) {
+const dataCache = new Map<string, any>();
+
+async function fetchData(
+  setTicketData: React.Dispatch<React.SetStateAction<TicketData[] | null>>,
+  setMetrics: React.Dispatch<React.SetStateAction<Metrics | null>>,
+  dateRange: DateRange,
+  graphData: GraphData
+) {
   setTicketData(null);
   setMetrics(null);
   const dateRangeKey = `${dateRange.start.split('T')[0]}-${dateRange.end.split('T')[0]}`;
@@ -20,11 +40,16 @@ async function fetchData(setTicketData, setMetrics, dateRange, graphData) {
   const data = dataCache.get(dateRangeKey);
   setTimeout(() => {
     setTicketData(modifyTicketData(data));
-    setMetrics(modifyMetricsData(data, graphData));
+    const metricsData = modifyMetricsData(data, graphData);
+    const metricsObject = metricsData.reduce((acc, item) => {
+      acc[item.label] = item.value;
+      return acc;
+    }, {} as Metrics);
+    setMetrics(metricsObject);
   }, 100); // Simulate loading delay
 }
 
-const GraphWithConversationModal = ({
+const GraphWithConversationModal: React.FC<GraphWithConversationModalProps> = ({
   isOpen,
   onClose,
   graphData,
@@ -32,9 +57,10 @@ const GraphWithConversationModal = ({
   description,
   dateRange,
 }) => {
-  const [ticketData, setTicketData] = React.useState(null);
-  const [metrics, setMetrics] = React.useState(null);
-  const [showTooltip, setShowTooltip] = React.useState(true);
+  const [ticketData, setTicketData] = React.useState<TicketData[] | null>(null);
+  const [metrics, setMetrics] = React.useState<Metrics | null>(null);
+  const [showTooltip, setShowTooltip] = React.useState<boolean>(true);
+
   useEffect(() => {
     fetchData(setTicketData, setMetrics, dateRange, graphData);
   }, [dateRange, graphData]);
