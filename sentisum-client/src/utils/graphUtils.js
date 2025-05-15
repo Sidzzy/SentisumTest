@@ -20,21 +20,23 @@ export const buildGraphData = (currentTrend, previousTrend) =>
 export const modifyTicketData = (ticketData) => {
   return ticketData.randomConversations.map((ticket) => ({
     ticketId: ticket.id,
-    source: 'API',
+    source: ticket.source.charAt(0).toUpperCase() + ticket.source.slice(1), // Capitalize first letter,
     message: ticket.message,
-    timestamp: new Date(ticket.timestamp).toLocaleTimeString('en-US', {
+    timestamp: new Date(ticket.timestamp).toLocaleString('en-US', {
+      day: '2-digit',
+      month: 'short',
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
-    }),
+    }).replace(',', ' -'), // Format as "Oct 07 - hh:mm AM/PM"
   }));
 };
 
 export const modifyMetricsData = (data) => {
   return [
     { label: 'Volume', value: data.totalConversations },
-    { label: 'Sentiment', value: '5%' },
-    { label: 'Percent of Tickets', value: '14%' },
     { label: 'NSAT', value: parseInt(data.nsatPercentage, 10) + '%' },
+    { label: 'Percent of Tickets', value: '14%' },
+    { label: 'Sentiment', value: '5%' },
   ];
 };

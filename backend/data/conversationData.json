@@ -2,350 +2,350 @@
     {
         "id": 10000001,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000002,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Kicked out of game randomly, losing rank.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000003,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000004,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000005,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000006,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000007,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000008,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000009,
         "timestamp": "2023-10-01T10:15:00Z",
-        "message": "Customer asked about loyalty program benefits.",
+        "message": "Match doesn't start, just shows loading forever.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000010,
         "timestamp": "2023-10-02T14:30:00Z",
-        "message": "Complaint about incorrect billing.",
+        "message": "Kicked out of game randomly, losing rank.",
         "source": "chat",
         "nsat": 6
     },
     {
         "id": 10000011,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Game suddenly closes during matches, very frustrating experience.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000012,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000013,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000014,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000015,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Match doesn't start, just shows loading forever.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000016,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Can't join matches, always stuck on loading screen.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000017,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Game abandoned halfway, losing progress each time.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000018,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000019,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000020,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Frequent disconnects during gameplay, ruins the experience.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000021,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000022,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Frequent disconnects during gameplay, ruins the experience.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000023,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000024,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000025,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Can't join matches, always stuck on loading screen.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000026,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000027,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Game suddenly closes during matches, very frustrating experience.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000028,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Match ends abruptly every time, please fix this bug.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000029,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000030,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Unable to play, app freezes constantly on start.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000031,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Can't join matches, always stuck on loading screen.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000032,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000033,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Can't join matches, always stuck on loading screen.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000034,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Unable to play, app freezes constantly on start.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000035,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000036,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000037,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000038,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Kicked out of game randomly, losing rank.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000039,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000040,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000041,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000042,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Match doesn't start, just shows loading forever.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000043,
         "timestamp": "2023-10-03T16:45:12Z",
-        "message": "Request for refund due to defective item.",
+        "message": "Crashes right after launching the game, unplayable.",
         "source": "phone",
         "nsat": 6
     },
     {
         "id": 10000044,
         "timestamp": "2023-10-04T11:05:23Z",
-        "message": "Customer asked about shipping status.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "email",
         "nsat": 9
     },
     {
         "id": 10000045,
         "timestamp": "2023-10-05T18:30:45Z",
-        "message": "Complaint about delayed delivery.",
+        "message": "Game crashes after every update, please resolve soon.",
         "source": "chat",
         "nsat": 5
     },
     {
         "id": 10000046,
         "timestamp": "2023-10-06T08:12:34Z",
-        "message": "Feedback on recent purchase experience.",
+        "message": "Game abandoned halfway, losing progress each time.",
         "source": "phone",
         "nsat": 10
     },
     {
         "id": 10000047,
         "timestamp": "2023-10-07T20:45:56Z",
-        "message": "Customer requested account cancellation.",
+        "message": "Can't join matches, always stuck on loading screen.",
         "source": "email",
         "nsat": 4
     },
     {
         "id": 10000048,
         "timestamp": "2023-10-08T13:25:11Z",
-        "message": "Inquiry about warranty coverage.",
+        "message": "Unexpected error crashes the game, can't play properly.",
         "source": "chat",
         "nsat": 7
     },
     {
         "id": 10000049,
         "timestamp": "2023-10-01T14:23:45Z",
-        "message": "Customer reported an issue with login.",
+        "message": "Game suddenly closes during matches, very frustrating experience.",
         "source": "email",
         "nsat": 8
     },
     {
         "id": 10000050,
         "timestamp": "2023-10-02T09:15:32Z",
-        "message": "Inquiry about product pricing.",
+        "message": "Game keeps crashing midway, can't complete any level.",
         "source": "chat",
         "nsat": 7
     }
