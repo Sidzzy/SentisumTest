@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { AreaChart, Area, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 import { buildGraphData } from '../../utils/graphUtils';
 import CustomTooltip from './graph-components/CustomTooltip';
+import { GraphData } from '../../interfaces/dashboardInterface';
 
-const StaticGraphForCardRow = ({ currentTrend, previousTrend }) => {
+const StaticGraphForCardRow: React.FC<GraphData> = ({
+  currentTrend,
+  previousTrend,
+}) => {
+  const graphContainerRef = useRef<HTMLDivElement>(null); // Add a ref for the graph container
+
   // Combine currentTrend and previousTrend into a single dataset
   const data = buildGraphData(currentTrend, previousTrend);
 
@@ -22,10 +28,18 @@ const StaticGraphForCardRow = ({ currentTrend, previousTrend }) => {
   const yDomain = calculateYDomain(data);
 
   return (
-    <div className="h-20">
+    <div className="h-20" ref={graphContainerRef}>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}>
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={
+              <CustomTooltip
+                graphContainerRef={
+                  graphContainerRef as React.RefObject<HTMLDivElement>
+                }
+              />
+            }
+          />
           <YAxis domain={yDomain} hide />
           <defs>
             {/* Gradient for Current Trend */}

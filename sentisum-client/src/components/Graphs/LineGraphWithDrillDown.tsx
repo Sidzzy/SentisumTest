@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
   Tooltip,
-  CartesianGrid,
   ResponsiveContainer,
   ReferenceArea,
 } from 'recharts';
 import { buildGraphData } from '../../utils/graphUtils';
 import { useModal } from '../../context/ModalContext';
 import CustomTooltip from './graph-components/CustomTooltip';
+import { GraphData } from '../../interfaces/dashboardInterface';
 
-const LineGraphWithDrillDown = ({ graphData }) => {
+// Define the interface for the component's props
+interface LineGraphWithDrillDownProps {
+  graphData: GraphData; // Data for the graph, including current and previous trends
+}
+
+const LineGraphWithDrillDown: React.FC<LineGraphWithDrillDownProps> = ({
+  graphData,
+}) => {
   const rootData = buildGraphData(
     graphData.currentTrend,
     graphData.previousTrend
   );
   const [data, setData] = useState(rootData);
-  const [history, setHistory] = useState([]); // Maintain history of graph states
+  const [history, setHistory] = useState<(typeof rootData)[]>([]); // Maintain history of graph states
   const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(null);
-  const [endX, setEndX] = useState(null);
+  const [startX, setStartX] = useState<string | null>(null);
+  const [endX, setEndX] = useState<string | null>(null);
+  const graphContainerRef = useRef<HTMLDivElement>(null); // Add a ref for the graph container
   const { updateModalData } = useModal();
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: any) => {
     setIsDragging(true);
     setStartX(e.activeLabel); // Capture the starting x-axis value
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any) => {
     if (isDragging && e.activeLabel) {
       setEndX(e.activeLabel); // Update the ending x-axis value while dragging
     }
@@ -87,7 +95,7 @@ const LineGraphWithDrillDown = ({ graphData }) => {
     }
   };
 
-  const calculateYDomain = (filteredData) => {
+  const calculateYDomain = (filteredData: typeof rootData) => {
     const allValues = filteredData.flatMap((point) => [
       point.currentValue,
       point.previousValue,
@@ -104,26 +112,23 @@ const LineGraphWithDrillDown = ({ graphData }) => {
 
     return [adjustedMinY, adjustedMaxY];
   };
+
   // Calculate the y-axis domain dynamically based on the current data
   const yDomain = calculateYDomain(data);
 
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div
+      className="w-full h-full flex flex-col items-center"
+      ref={graphContainerRef}
+    >
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={data}
           style={{ cursor: isDragging ? 'crosshair' : 'pointer' }}
-          onMouseDown={(e) => {
-            handleMouseDown(e);
-          }}
-          onMouseMove={(e) => {
-            handleMouseMove(e);
-          }}
-          onMouseUp={(e) => {
-            handleMouseUp(e);
-          }}
+          onMouseDown={(e) => handleMouseDown(e)}
+          onMouseMove={(e) => handleMouseMove(e)}
+          onMouseUp={() => handleMouseUp()}
         >
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <XAxis
             dataKey="date"
             stroke="#6b7280"
@@ -155,7 +160,6 @@ const LineGraphWithDrillDown = ({ graphData }) => {
             tickLine={false}
             axisLine={{ stroke: '#d1d5db' }}
           />
-
           <YAxis
             domain={yDomain}
             stroke="#6b7280"
@@ -165,12 +169,19 @@ const LineGraphWithDrillDown = ({ graphData }) => {
               fontFamily: 'Arial, sans-serif',
             }}
             tickLine={false}
-            tickFormatter={(value, index) => {
-              return index === 0 ? '' : value;
-            }}
+            tickFormatter={(value, index) => (index === 0 ? '' : value)}
             axisLine={false}
           />
-          <Tooltip content={<CustomTooltip isDragging={isDragging} />} />
+          <Tooltip
+            content={
+              <CustomTooltip
+                isDragging={isDragging}
+                graphContainerRef={
+                  graphContainerRef as React.RefObject<HTMLDivElement>
+                }
+              />
+            }
+          />
           <defs>
             <linearGradient
               id="currentTrendGradient"
@@ -182,8 +193,17 @@ const LineGraphWithDrillDown = ({ graphData }) => {
               <stop offset="0%" stopColor="#9CB9FF" stopOpacity={0.3} />
               <stop offset="100%" stopColor="#4F46E5" stopOpacity={0} />
             </linearGradient>
+            <linearGradient
+              id="previousTrendGradient"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop offset="0%" stopColor="#9CA3AF" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="#9CA3AF" stopOpacity={0} />
+            </linearGradient>
           </defs>
-
           <Area
             type="monotone"
             dataKey="currentValue"
@@ -191,7 +211,6 @@ const LineGraphWithDrillDown = ({ graphData }) => {
             fill="url(#currentTrendGradient)"
             strokeWidth={2}
           />
-
           <Area
             type="monotone"
             dataKey="previousValue"
@@ -200,7 +219,6 @@ const LineGraphWithDrillDown = ({ graphData }) => {
             strokeWidth={2}
             strokeDasharray="5 5"
           />
-
           {isDragging && startX && endX && (
             <ReferenceArea
               x1={startX}

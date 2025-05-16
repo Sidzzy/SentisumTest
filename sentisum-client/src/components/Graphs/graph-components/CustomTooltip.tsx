@@ -1,27 +1,43 @@
 import React from 'react';
+import { TooltipProps } from 'recharts'; // Import types from recharts
 
 // Helper function to format dates as "DD MON"
-const formatDate = (date) => {
+const formatDate = (date: Date): string => {
   const day = date.getDate().toString().padStart(2, '0'); // Ensure 2-digit day
   const month = date.toLocaleString('default', { month: 'short' }); // Get short month name
   return `${day} ${month}`;
 };
 
 // Helper function to subtract days from a date
-const subtractDays = (date, days) => {
+const subtractDays = (date: Date, days: number): Date => {
   const result = new Date(date);
   result.setDate(result.getDate() - days);
   return result;
 };
 
-// Custom Tooltip Content
-const CustomTooltip = ({ active, payload, coordinate, isDragging }) => {
+// Define the interface for the component's props
+interface CustomTooltipProps extends TooltipProps<number, string> {
+  isDragging?: boolean; // Optional boolean to indicate if dragging is happening
+  graphContainerRef: React.RefObject<HTMLDivElement>; // Ref for the graph container
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  active,
+  payload,
+  coordinate,
+  isDragging = false,
+  graphContainerRef,
+}) => {
   if (active && payload && payload.length && !isDragging) {
     const current = payload.find((p) => p.dataKey === 'currentValue');
     const previous = payload.find((p) => p.dataKey === 'previousValue');
     const percentageChange =
       previous && current
-        ? (((current.value - previous.value) / previous.value) * 100).toFixed(2)
+        ? (
+            (((current.value || 0) - (previous.value || 0)) /
+              (previous.value || 1)) *
+            100
+          ).toFixed(2)
         : null;
 
     // Format dates manually
@@ -36,22 +52,21 @@ const CustomTooltip = ({ active, payload, coordinate, isDragging }) => {
     ); // Subtract 7 days for previous date
 
     // Get container dimensions
-    const containerWidth =
-      document.querySelector('.recharts-wrapper')?.offsetWidth || 0;
+    const containerWidth = graphContainerRef.current?.offsetWidth || 0; // Use the ref to get the container width
 
     // Tooltip dimensions
     const tooltipWidth = 200; // Approximate width of the tooltip
     const tooltipHeight = 100; // Approximate height of the tooltip
 
     // Calculate adjusted positions to prevent overflow
-    let adjustedLeft = coordinate?.x - tooltipWidth / 2;
-    let adjustedTop = coordinate?.y - tooltipHeight - 10; // Position above the point with some margin
+    let adjustedLeft = (coordinate?.x || 0) - tooltipWidth / 2;
+    let adjustedTop = (coordinate?.y || 0) - tooltipHeight - 10; // Position above the point with some margin
 
     // Clamp the tooltip within the container boundaries
     if (adjustedLeft < 0) adjustedLeft = 0; // Prevent overflow on the left
     if (adjustedLeft + tooltipWidth > containerWidth)
       adjustedLeft = containerWidth - tooltipWidth; // Prevent overflow on the right
-    if (adjustedTop < 0) adjustedTop = coordinate?.y + 10; // If above boundary, position below the point
+    if (adjustedTop < 0) adjustedTop = (coordinate?.y || 0) + 10; // If above boundary, position below the point
 
     return (
       <div
@@ -78,10 +93,12 @@ const CustomTooltip = ({ active, payload, coordinate, isDragging }) => {
             {percentageChange && (
               <div
                 className={`text-xs ${
-                  percentageChange > 0 ? 'text-green-400' : 'text-red-400'
+                  parseInt(percentageChange) > 0
+                    ? 'text-green-400'
+                    : 'text-red-400'
                 }`}
               >
-                {percentageChange > 0 ? '+' : ''}
+                {parseInt(percentageChange) > 0 ? '+' : ''}
                 {percentageChange}% from previous period
               </div>
             )}
